@@ -15,9 +15,6 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1620311360934_6251';
 
-  // add your middleware config here
-  config.middleware = [];
-
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -27,6 +24,13 @@ module.exports = appInfo => {
     csrf: {
       headerName: 'x-csrf-token', // 自定义请求头
     },
+  };
+
+  // eslint-disable-next-line array-bracket-spacing
+  config.middleware = ['request'];
+
+  exports.request = {
+    requestHeader: 'hang',
   };
 
   return {

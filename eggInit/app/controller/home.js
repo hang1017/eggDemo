@@ -14,6 +14,18 @@ class HomeController extends Controller {
       success: true,
     };
   }
+
+  async userDetailController() {
+    const { ctx } = this;
+    const { id } = ctx.request.body;
+    ctx.body = {
+      data: {
+        id,
+        name: `name${id}`,
+      },
+      success: true,
+    };
+  }
 }
 
 module.exports = HomeController;

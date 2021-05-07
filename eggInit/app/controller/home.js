@@ -3,9 +3,16 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async index() {
+  async userListController() {
     const { ctx } = this;
-    ctx.body = 'hi, egg';
+    const data = Array.from(new Array(9)).map((_val, i) => ({
+      name: `name${i}`,
+      id: i,
+    }));
+    ctx.body = {
+      data,
+      success: true,
+    };
   }
 }
 

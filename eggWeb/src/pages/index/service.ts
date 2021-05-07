@@ -1,5 +1,6 @@
 import { request } from 'alita';
+import { getUserListApi } from '@/utils/api';
 
-export async function query(): Promise<any> {
-  return request('/api/hello', { method: 'post' });
+export async function getUserList(): Promise<any> {
+  return request(getUserListApi, { method: 'get' });
 }

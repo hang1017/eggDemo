@@ -4,10 +4,9 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async userListController() {
-    const { ctx, app } = this;
-    const sql = 'select * from user';
+    const { ctx, service } = this;
 
-    const res = await app.mysql.query(sql);
+    const res = await service.user.userList();
 
     ctx.body = {
       data: res,
@@ -16,11 +15,10 @@ class HomeController extends Controller {
   }
 
   async userDetailController() {
-    const { ctx, app } = this;
+    const { ctx, service } = this;
     const { id } = ctx.request.body;
-    const sql = `select * from user where id=${id}`;
 
-    const res = await app.mysql.query(sql);
+    const res = await service.user.userDetail(id);
     ctx.body = {
       data: res,
       success: true,
